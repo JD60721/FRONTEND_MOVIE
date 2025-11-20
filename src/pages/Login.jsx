@@ -4,7 +4,7 @@ import { Input, Button } from "../components/ui.jsx";
 
 export default function Login() {
   const navigate = useNavigate();
-  const API = import.meta.env.VITE_API_BASE_URL || "";
+  const API = (import.meta.env.VITE_API_BASE_URL || "").replace(/\/+$/, "");
   const [mode, setMode] = useState("login");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

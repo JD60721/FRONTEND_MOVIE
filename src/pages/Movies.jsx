@@ -4,7 +4,7 @@ import { Input, Button, Card, Grid } from "../components/ui.jsx";
 
 export default function Movies() {
   const navigate = useNavigate();
-  const API = import.meta.env.VITE_API_BASE_URL || "";
+  const API = (import.meta.env.VITE_API_BASE_URL || "").replace(/\/+$/, "");
   const [query, setQuery] = useState("");
   const [films, setFilms] = useState([]);
   const [filmsPage, setFilmsPage] = useState(1);
