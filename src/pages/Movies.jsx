@@ -4,6 +4,7 @@ import { Input, Button, Card, Grid } from "../components/ui.jsx";
 
 export default function Movies() {
   const navigate = useNavigate();
+  const API = import.meta.env.VITE_API_BASE_URL || "";
   const [query, setQuery] = useState("");
   const [films, setFilms] = useState([]);
   const [filmsPage, setFilmsPage] = useState(1);
@@ -25,7 +26,7 @@ export default function Movies() {
 
   async function loadFilms(q, page = 1) {
     setFilms(null);
-    const r = await fetch(`/api/films?q=${encodeURIComponent(q || "")}&page=${page}`, { headers: authHeaders() });
+    const r = await fetch(`${API}/api/films?q=${encodeURIComponent(q || "")}&page=${page}`, { headers: authHeaders() });
     const data = await r.json();
     if (Array.isArray(data)) {
       setFilms(data);
@@ -40,7 +41,7 @@ export default function Movies() {
 
   async function loadFavorites(page = 1, limit = 10) {
     try {
-      const r = await fetch(`/api/favorites?page=${page}&limit=${limit}`, { headers: authHeaders() });
+      const r = await fetch(`${API}/api/favorites?page=${page}&limit=${limit}`, { headers: authHeaders() });
       if (!r.ok) return;
       const data = await r.json();
       if (Array.isArray(data)) {
@@ -57,7 +58,7 @@ export default function Movies() {
 
   async function addFavorite(f) {
     try {
-      const r = await fetch(`/api/favorites`, {
+      const r = await fetch(`${API}/api/favorites`, {
         method: "POST",
         headers: { "Content-Type": "application/json", ...authHeaders() },
         body: JSON.stringify({
@@ -76,7 +77,7 @@ export default function Movies() {
 
   async function removeFavorite(id) {
     try {
-      const r = await fetch(`/api/favorites/${id}`, { method: "DELETE", headers: authHeaders() });
+      const r = await fetch(`${API}/api/favorites/${id}`, { method: "DELETE", headers: authHeaders() });
       if (!r.ok) return;
       setFavorites((prev) => prev.filter((x) => x._id !== id));
     } catch {}

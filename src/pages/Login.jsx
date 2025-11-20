@@ -4,6 +4,7 @@ import { Input, Button } from "../components/ui.jsx";
 
 export default function Login() {
   const navigate = useNavigate();
+  const API = import.meta.env.VITE_API_BASE_URL || "";
   const [mode, setMode] = useState("login");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -22,7 +23,7 @@ export default function Login() {
     if (!validEmail) return setError("Email inválido");
     if (!validPassword) return setError("La contraseña debe tener al menos 6 caracteres");
     try {
-      const r = await fetch(`/api/auth/login`, {
+      const r = await fetch(`${API}/api/auth/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password })
@@ -46,7 +47,7 @@ export default function Login() {
     if (!validEmail) return setError("Email inválido");
     if (!validPassword) return setError("La contraseña debe tener al menos 6 caracteres");
     try {
-      const r = await fetch(`/api/auth/register`, {
+      const r = await fetch(`${API}/api/auth/register`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password, name })
