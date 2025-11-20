@@ -1,0 +1,32 @@
+:root {
+  --bg: #0f172a;
+  --fg: #e5e7eb;
+  --muted: #94a3b8;
+  --accent: #22c55e;
+  --card: #111827;
+  --border: #1f2937;
+}
+* { box-sizing: border-box }
+body { margin: 0; background: var(--bg); color: var(--fg); font-family: system-ui, sans-serif }
+.container { max-width: 1000px; margin: 0 auto; padding: 16px }
+.title { font-size: 24px; font-weight: 700 }
+.subtitle { margin-top: 24px; font-size: 18px; font-weight: 600 }
+.ui-input { width: 100%; padding: 10px 12px; border-radius: 8px; border: 1px solid var(--border); background: var(--card); color: var(--fg) }
+.ui-button { padding: 10px 14px; border-radius: 8px; border: 1px solid var(--border); background: var(--card); color: var(--fg); cursor: pointer }
+.ui-button:disabled { opacity: .6; cursor: not-allowed }
+.ui-card { border: 1px solid var(--border); border-radius: 12px; overflow: hidden; background: var(--card) }
+.ui-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px }
+.row { display: flex; gap: 8px; align-items: center }
+.spacer { height: 12px }
+.text-muted { color: var(--muted) }
+.poster { width: 100%; height: 300px; object-fit: cover }
+.card-body { padding: 10px }
+.badge { display: inline-block; padding: 4px 8px; border: 1px solid var(--border); border-radius: 999px; font-size: 12px }
+.pagination { display: flex; gap: 8px; align-items: center; margin-top: 12px }
+.topbar { display: flex; align-items: center; justify-content: space-between }
+.full { min-height: 100vh; display: flex; align-items: center; justify-content: center }
+.auth-card { width: 100%; max-width: 420px; border: 1px solid var(--border); border-radius: 14px; background: var(--card); box-shadow: 0 8px 24px rgba(0,0,0,.35) }
+.auth-header { padding: 16px; border-bottom: 1px solid var(--border); font-weight: 700; font-size: 18px }
+.auth-body { padding: 16px }
+.auth-actions { display: flex; gap: 8px; align-items: center; justify-content: flex-end }
+.alert { padding: 10px 12px; border-radius: 8px; border: 1px solid #7f1d1d; background: rgba(220,38,38,.15); color: #fecaca }
